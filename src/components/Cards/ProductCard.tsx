@@ -22,7 +22,7 @@ export default function ProductCard({product}:ProductCardProps) {
       {/* Price and Button */}
       <div className="mt-4">
         <p className="text-purple-700 text-xl font-semibold">RS.{product.price}</p>
-        <button className="bg-purple-700 text-white py-2 rounded mt-2 w-full">Shop Now</button>
+        <button className="bg-purple-700 text-white py-2 rounded mt-2 w-full hover:bg-purple-900 cursor-pointer">Shop Now</button>
       </div>
     </div>
   )

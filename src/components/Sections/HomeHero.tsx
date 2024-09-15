@@ -29,7 +29,7 @@ export default function HomeHero() {
           Our skincare brand embodies the essence of Sri Lankan beauty, crafted with care for radiant skin.
         </p>
         <div className="flex justify-center">
-          <button className="bg-purple-500 text-white text-lg font-medium py-2 px-6 rounded mt-4" onClick={()=>handleNavigation('/about')}>
+          <button className="bg-purple-500 text-white text-lg font-medium py-2 px-6 rounded mt-4 hover:bg-purple-700 transition duration-75" onClick={()=>handleNavigation('/about')}>
             Read More
             </button>
         </div>

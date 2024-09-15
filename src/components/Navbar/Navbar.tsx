@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../Images/logo.png';
 import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import './Navbar.css'
 
 export default function Navbar() {
   const [isOpen, setIsOpenNav] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); 
+  const isActive = (path: string) => location.pathname === path;
+
 
   const handleNavigation = (path:string) =>{
     setIsOpenNav(false)
@@ -37,10 +41,10 @@ export default function Navbar() {
           {/* Nav Links for Desktop */}
           <nav className="hidden md:flex flex-1 mx-8">
             <ul className="flex justify-center w-full space-x-32">
-              <li><a href="#home" className="text-gray-950 text-xl" onClick={()=>handleNavigation('/')}>Home</a></li>
-              <li><a href="#store" className="text-gray-950 text-xl" onClick={()=>handleNavigation('/products')}>Store</a></li>
-              <li><a href="#about" className="text-gray-950 text-xl " onClick={()=> handleNavigation('/about')}>About Us</a></li>
-              <li><a href="#contact" className="text-gray-950 text-xl" onClick={()=> handleNavigation('/contact')}>Contact Us</a></li>
+              <li><a href="#home" className={`nav-link text-xl ${isActive('/') ? 'active' : ''}`} onClick={()=>handleNavigation('/')}>Home</a></li>
+              <li><a href="#store" className={`nav-link text-xl ${isActive('/products') ? 'active' : ''}`} onClick={()=>handleNavigation('/products')}>Store</a></li>
+              <li><a href="#about" className={`nav-link text-xl ${isActive('/about') ? 'active' : ''}`} onClick={()=> handleNavigation('/about')}>About Us</a></li>
+              <li><a href="#contact" className={`nav-link text-xl ${isActive('/contact') ? 'active' : ''}`} onClick={()=> handleNavigation('/contact')}>Contact Us</a></li>
             </ul>
           </nav>
 

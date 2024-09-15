@@ -1,11 +1,37 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick'
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import sliderData from '../../Data/SlideData';
 
 export default function HomeSlider() {
+    interface ArrowProps {
+        onClick?: React.MouseEventHandler<HTMLDivElement>;
+    }
+
+    const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => {
+        return (
+            <div
+                className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 bg-purple-500 text-white rounded-full p-2 cursor-pointer"
+                onClick={onClick}
+            >
+                <FaArrowLeft size={20} />
+            </div>
+        );
+    };
+
+    const NextArrow: React.FC<ArrowProps> = ({ onClick }) => {
+        return (
+            <div
+                className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 bg-purple-500 text-white rounded-full p-2 cursor-pointer"
+                onClick={onClick}
+            >
+                <FaArrowRight size={20} />
+            </div>
+        );
+    };
 
     const navigate = useNavigate();
   
@@ -19,6 +45,8 @@ export default function HomeSlider() {
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 1,
+        nextArrow:<NextArrow/>,
+        prevArrow:<PrevArrow/>,
         responsive: [
             {
                 breakpoint: 1024,
